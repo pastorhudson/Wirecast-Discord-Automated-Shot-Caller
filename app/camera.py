@@ -6,7 +6,7 @@ class Camera:
         # self.left = ''
         # self.right = ''
         # self.center = ''
-        self.qued = ''
+        self.queued = ''
         self.live = ''
 
     def __repr__(self):
@@ -17,26 +17,26 @@ class Camera:
             sort_keys=True, indent=4)
 
     def set_camera(self, camera):
-        if self.qued != camera:
-            self.qued = camera
-        elif self.qued == camera:
+        if self.queued != camera:
+            self.queued = camera
+        elif self.queued == camera:
             self.live = camera
-            self.qued = ''
+            self.queued = ''
 
         return self
 
     def live_camera(self, camera):
         if camera == 'left':
             self.left = 'live'
-        elif self.left != 'qued':
+        elif self.left != 'queued':
             self.left = ''
         if camera == 'right':
             self.right = 'live'
-        elif self.right != 'qued':
+        elif self.right != 'queued':
             self.right = ''
         if camera == 'center':
             self.center = 'live'
-        elif self.center != 'qued':
+        elif self.center != 'queued':
             self.center = ''
 
         return

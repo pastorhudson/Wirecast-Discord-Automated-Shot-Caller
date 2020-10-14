@@ -59,9 +59,9 @@ class Music(commands.Cog):
         self.bot = bot
         self.directing = False
         self.cam_stats = {"live": "",
-                              "qued": ""}
+                              "queued": ""}
         self.new_cam_stats = {"live": "",
-                              "qued": ""}
+                              "queued": ""}
 
     @commands.command()
     async def join(self, ctx, *, channel: discord.VoiceChannel):
@@ -117,7 +117,7 @@ class Music(commands.Cog):
                     await self.cam_announce(ctx, f'{new_cam_stats["live"]+"Live"}')
                 else:
                     print("Announce Que Change")
-                    await self.cam_announce(ctx, f'{new_cam_stats["qued"]+"Queue"}')
+                    await self.cam_announce(ctx, f'{new_cam_stats["queued"]+"Queue"}')
                 self.cam_stats = new_cam_stats
             await asyncio.sleep(1)  # task runs every 60 seconds
 
