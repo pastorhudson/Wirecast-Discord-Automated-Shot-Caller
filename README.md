@@ -1,2 +1,2 @@
-# cbc-media_team-bot
-This is a bot for the media team discord to announce camera shots from wirecast/streamdeck
+# Wirecast Discord Automated Shot Caller
+This project enables wirecast to automatically call shots on a Discord Audio Channel.
