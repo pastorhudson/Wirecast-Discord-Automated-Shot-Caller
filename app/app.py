@@ -1,8 +1,8 @@
-from flask import Flask
-from app.camera import Camera
+from flask import Flask, jsonify
+from flask import request
 app = Flask(__name__)
 
-camera = Camera()
+shot_status = {"live": "", "queued": ""}
 
 
 @app.route('/')
@@ -10,24 +10,12 @@ def hello_world():
     return 'This is a cbc-media tool. Not much to see here.'
 
 
-@app.route('/camera')
-def camera_status():
-    return camera.toJSON()
-
-
-@app.route('/left')
-def left_cam():
-    camera.set_camera('left')
-    return camera.toJSON()
-
-
-@app.route('/right')
-def right_cam():
-    camera.set_camera('right')
-    return camera.toJSON()
-
-
-@app.route('/center')
-def center_cam():
-    camera.set_camera('center')
-    return camera.toJSON()
+@app.route('/api/shot_status/', methods=['GET', 'POST'])
+def shot_api():
+    global shot_status
+    if request.method == 'POST':
+        if request.json != shot_status:
+            shot_status = request.json
+        return request.json
+    elif request.method == 'GET':
+        return jsonify(shot_status)

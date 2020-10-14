@@ -6,7 +6,6 @@ from discord import ClientException
 from discord.ext import commands
 import requests
 
-
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -98,9 +97,9 @@ class Music(commands.Cog):
         try:
             if self.directing:
                 await self.join(ctx=ctx, channel=ctx.author.voice.channel)
-                await self.play(ctx, query='sounds/directorIsOn.mp3', notify=False, disconnect=False)
+                await self.play(ctx, query='app/sounds/directorIsOn.mp3', notify=False, disconnect=False)
             else:
-                await self.play(ctx, query='sounds/directorIsOff.mp3', notify=False, disconnect=True)
+                await self.play(ctx, query='app/sounds/directorIsOff.mp3', notify=False, disconnect=True)
                 return
         except AttributeError:
             self.directing = False
@@ -124,7 +123,7 @@ class Music(commands.Cog):
     @commands.command()
     async def cam_announce(self, ctx, cam_announecment):
         """Plays a file from the local filesystem"""
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(f'sounds/{cam_announecment}.mp3'))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(f'app/sounds/{cam_announecment}.mp3'))
         for i in range(3):
             try:
                 ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
