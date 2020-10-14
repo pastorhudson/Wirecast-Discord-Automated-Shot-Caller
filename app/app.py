@@ -4,9 +4,10 @@ app = Flask(__name__)
 
 camera = Camera()
 
+
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'This is a cbc-media tool. Not much to see here.'
 
 
 @app.route('/camera')
