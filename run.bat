@@ -1,0 +1,1 @@
+C:\bot\venv\Scripts\python bot.py
